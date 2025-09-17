@@ -1,0 +1,131 @@
+.gender-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #d9a7c7, #fffcdc);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.gender-page h1 {
+  font-size: 60px;
+  margin-bottom: 20px;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.gender-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.gender-buttons button {
+  background: #efc0aa;
+  border: none;
+  color: white;
+  padding: 30px 50px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.gender-buttons button:hover {
+  background: #ffffff;
+  color: #333;
+}
+.gender-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #d9a7c7, #fffcdc);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.gender-title {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: bold;
+}
+
+.gender-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #555;
+}
+
+.gender-buttons {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gender-buttons button {
+  background: #efc0aa;
+  border: none;
+  color: white;
+  padding: 20px 50px;
+  border-radius: 12px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.gender-buttons button:hover {
+  background: #ffffff;
+  color: #333;
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Male button */
+.male-btn {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.male-btn:hover {
+  background: #ffffff;
+  color: #0077b6;
+}
+
+/* Female button */
+.female-btn {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+}
+
+.female-btn:hover {
+  background: #ffffff;
+  color: #c9184a;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gender-title {
+    font-size: 2rem;
+  }
+
+  .gender-subtitle {
+    font-size: 1rem;
+  }
+
+  .gender-buttons {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .gender-buttons button {
+    width: 100%;
+    max-width: 300px;
+    padding: 18px;
+  }
+}

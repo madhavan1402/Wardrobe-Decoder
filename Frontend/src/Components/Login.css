@@ -1,0 +1,207 @@
+.Login-Register * {
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.Home-Icon {
+  margin-left: 20px;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 28px;
+  color: #0ef;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.Home-Icon:hover {
+  transform: scale(1.2);
+  color: #00c3ff;
+}
+
+.Login-Register {
+  color: #ffffff;
+  text-align: center;
+  display: flex;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-image: url("https://plus.unsplash.com/premium_photo-1664202526559-e21e9c0fb46a?fm=jpg&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d2FsayUyMGluJTIwY2xvc2V0fGVufDB8fDB8fHww&ixlib=rb-4.1.0&q=60&w=3000");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: inset 0 0 0 1000px rgba(50, 48, 48, 0.55);
+}
+
+/* Wrapper */
+.wrapper {
+  position: relative;
+  width: 420px;
+  height: 460px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: height 0.3s ease;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
+}
+
+.wrapper.active {
+  height: 530px;
+}
+
+/* Login Form */
+.wrapper .form-box.login {
+  translate: 0;
+  transition: translate 0.25s ease-in-out;
+}
+
+.wrapper.active .form-box.login {
+  translate: -420px;
+}
+
+/* Register Form */
+.wrapper .form-box.register {
+  position: absolute;
+  translate: 420px;
+  transition: translate 0.25s ease-in-out;
+}
+
+.wrapper.active .form-box.register {
+  translate: 0;
+}
+
+/* Common Form Box */
+.wrapper .form-box {
+  width: 100%;
+  padding: 40px;
+}
+
+form h1 {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Input Box */
+.input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 20px 0;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #fff;
+  padding: 20px 45px 20px 20px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.input-box input:focus {
+  border: 2px solid #0ef;
+}
+
+.input-box input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  translate: 0 -50%;
+  font-size: 16px;
+  color: #0ef;
+}
+
+/* Remember + Forgot */
+.remember-forget {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: -10px 0 15px;
+  flex-wrap: wrap;
+}
+
+.remember-forget a {
+  color: #0ef;
+  text-decoration: none;
+}
+
+.remember-forget a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+.btn-primary {
+  width: 100%;
+  height: 45px;
+  background: #0ef;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  font-weight: 700;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #00c3ff;
+  transform: scale(1.05);
+  color: #fff;
+}
+
+/* Register link */
+form .register-link {
+  font-size: 14px;
+  text-align: center;
+  margin: 15px 0 10px;
+}
+
+.register-link p a {
+  color: #0ef;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-link p a:hover {
+  text-decoration: underline;
+  color: #00c3ff;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .wrapper {
+    width: 95%;
+    height: auto;
+    padding: 20px 10px;
+  }
+
+  form h1 {
+    font-size: 26px;
+  }
+
+  .input-box input {
+    font-size: 14px;
+  }
+
+  .btn-primary {
+    font-size: 14px;
+  }
+}
