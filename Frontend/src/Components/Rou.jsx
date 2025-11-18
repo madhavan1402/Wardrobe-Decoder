@@ -4,6 +4,7 @@ import Login from './Login';
 import Home from './Home';
 import Gender from './Gender';
 import DressForm from './DressForm';
+import Results from './Results';
 
 const Rou = () => {
   return (
@@ -12,6 +13,7 @@ const Rou = () => {
         <Route path="/Gender" element={<Gender />} />
         {/* ✅ Dynamic gender route */}
         <Route path="/DressForm/:gender" element={<DressForm />} />
+        <Route path="/results" element={<Results />} />
         <Route path="/Login" element={<Login />} />
       </Routes>
   );

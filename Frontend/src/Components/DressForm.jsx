@@ -13,7 +13,11 @@ const DressForm = () => {
   const [size, setSize] = useState("");
   const [dressType, setDressType] = useState(config?.dressTypes?.[0] || "");
   const [skinTone, setSkinTone] = useState(config?.skinTones?.[0] || "");
-  const [occasion, setOccasion] = useState(config?.occasions[0] || "");
+  const [occasion, setOccasion] = useState(config?.occasions?.[0] || "");
+  const [heightCategory, setHeightCategory] = useState(config?.heightCategories?.[0] || "");
+  const [weather, setWeather] = useState(config?.weathers?.[0] || "");
+  const [vacationType, setVacationType] = useState(config?.vacationTypes?.[0] || "");
+  const [stylePreference, setStylePreference] = useState(config?.stylePreferences?.[0] || "");
 
   if (!config) {
     return (
@@ -23,18 +27,41 @@ const DressForm = () => {
     );
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!size) {
       alert("⚠️ Please enter your size!");
       return;
     }
-    alert(
-      `👕 Outfit Selected for ${gender.toUpperCase()}:
-       📏 Size: ${size}
-       👔 Dress Type: ${dressType}
-       🎨 Skin Tone: ${skinTone}
-       🎉 Occasion: ${occasion}`
-    );
+
+    const requestData = {
+      gender: gender,
+      skinTone: skinTone,
+      heightCategory: heightCategory,
+      weather: weather,
+      occasion: occasion,
+      vacationType: vacationType,
+      stylePreference: stylePreference,
+    };
+
+    try {
+      const response = await fetch("http://localhost:8081/api/recommendations/recommend", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        navigate("/results", { state: { recommendations: data } });
+      } else {
+        alert("❌ Failed to get recommendations. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("❌ Network error. Please check your connection.");
+    }
   };
 
   return (
@@ -107,6 +134,82 @@ const DressForm = () => {
             {config.occasions.map((occ, index) => (
               <option key={index} value={occ}>
                 {occ}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* ✅ Height Category */}
+        <div className="form-group">
+          <label>📏 Height Category:</label>
+          <select
+            value={heightCategory}
+            onChange={(e) => setHeightCategory(e.target.value)}
+          >
+            <option value="" disabled>
+              --Select height category--
+            </option>
+
+            {config.heightCategories.map((height, index) => (
+              <option key={index} value={height}>
+                {height}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* ✅ Weather */}
+        <div className="form-group">
+          <label>🌤️ Weather:</label>
+          <select
+            value={weather}
+            onChange={(e) => setWeather(e.target.value)}
+          >
+            <option value="" disabled>
+              --Select weather--
+            </option>
+
+            {config.weathers.map((w, index) => (
+              <option key={index} value={w}>
+                {w}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* ✅ Vacation Type */}
+        <div className="form-group">
+          <label>🏖️ Vacation Type:</label>
+          <select
+            value={vacationType}
+            onChange={(e) => setVacationType(e.target.value)}
+          >
+            <option value="" disabled>
+              --Select vacation type--
+            </option>
+
+            {config.vacationTypes.map((vac, index) => (
+              <option key={index} value={vac}>
+                {vac}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* ✅ Style Preference */}
+        <div className="form-group">
+          <label>👗 Style Preference:</label>
+          <select
+            value={stylePreference}
+            onChange={(e) => setStylePreference(e.target.value)}
+          >
+            <option value="" disabled>
+              --Select style preference--
+            </option>
+
+            {config.stylePreferences.map((style, index) => (
+              <option key={index} value={style}>
+                {style}
               </option>
             ))}
           </select>
